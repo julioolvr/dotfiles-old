@@ -1,0 +1,81 @@
+{
+  // Place your settings in this file to overwrite the default settings
+  "editor.renderWhitespace": "all",
+  "editor.scrollBeyondLastLine": false,
+  "editor.fontSize": 15,
+  "editor.fontFamily": "Operator Mono, Fira Code, Fira Mono",
+  "editor.tabSize": 2,
+  "editor.minimap.enabled": false,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "javascript.validate.enable": false,
+  "eslint.enable": false,
+  "standard.enable": false,
+  "window.zoomLevel": 0,
+  "workbench.activityBar.visible": false,
+  "atomKeymap.promptV3Features": true,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.formatOnPaste": false,
+  "extensions.ignoreRecommendations": false,
+  "[rust]": {
+    "editor.tabSize": 4
+  },
+  "[tsv]": {
+    "editor.insertSpaces": false
+  },
+  "files.associations": {
+    "*.jsx": "javascript"
+  },
+  "gitlens.advanced.messages": {
+    "suppressCommitHasNoPreviousCommitWarning": false,
+    "suppressCommitNotFoundWarning": false,
+    "suppressFileNotUnderSourceControlWarning": false,
+    "suppressGitVersionWarning": false,
+    "suppressLineUncommittedWarning": false,
+    "suppressNoRepositoryWarning": false,
+    "suppressResultsExplorerNotice": false,
+    "suppressShowKeyBindingsNotice": true,
+    "suppressUpdateNotice": false,
+    "suppressWelcomeNotice": true
+  },
+  "gitlens.codeLens.authors.enabled": false,
+  "gitlens.codeLens.recentChange.enabled": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "gitlens.keymap": "none",
+  "workbench.colorTheme": "Night Owl",
+  "breadcrumbs.enabled": false,
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "gitlens.views.fileHistory.enabled": true,
+  "gitlens.views.lineHistory.enabled": true,
+  "editor.fontLigatures": true,
+  "[mdx]": {
+    "editor.wordWrap": "on"
+  },
+  "projectManager.openInNewWindowWhenClickingInStatusBar": true,
+  "sync.gist": "d4c1ff6ed808ea7938b96d3b62192d15",
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "ruby.format": "rufo",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.fontWeight": "200",
+  "sync.forceUpload": true,
+  "vsicons.dontShowNewVersionMessage": true,
+  "polacode.backgroundColor": "transparent",
+  "polacode.transparentBackground": true,
+  "docker.images.sortBy": "CreatedTime",
+  "sqltools.useNodeRuntime": true,
+  "indentRainbow.ignoreErrorLanguages": ["markdown", "ruby"]
+}

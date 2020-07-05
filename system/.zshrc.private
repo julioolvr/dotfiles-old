@@ -1,0 +1,1 @@
+alias mfa='python3 /Users/joliv/Work/cio/constructor_devops/aws/mfa_helper/aws_update_tokens.py'

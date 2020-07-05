@@ -1,0 +1,19 @@
+# MacOS files
+.DS_Store
+.DS_Store?
+
+# Ruby projects gem directory
+vendor/bundle
+
+# VSCode config directory
+.vscode/
+
+# Vim tmp files
+*.swp
+
+# Lefthook config
+lefthook.yml
+
+# Vim config
+.vim
+.nvimrc
