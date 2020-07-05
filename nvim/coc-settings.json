@@ -1,0 +1,9 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "rust",
+    "typescript",
+    "typescriptreact",
+    "json"
+  ],
+  "solargraph.diagnostics": true
+}

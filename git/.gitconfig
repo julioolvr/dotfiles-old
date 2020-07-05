@@ -1,0 +1,61 @@
+[user]
+	name = Julio
+	email = julio.olvr@gmail.com
+[alias]
+	st = status
+	ci = commit
+	cia = commit --amend
+	br = branch
+	co = checkout
+	df = diff
+	pl = pull
+	lg = log -p
+	fc = fetch
+	who = shortlog -s --
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	rb = rebase
+	wip = !git add . && git commit -m 'WIP' --no-verify
+	# piw = opposite of "wip"
+	piw = reset HEAD~
+	# pb = "publish"
+	pb = !git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD)
+	cp = cherry-pick
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	ui = true
+	pager = true
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = 11
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	commit = yellow bold
+	whitespace = red reverse
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[core]
+	excludesfile = /Users/joliv/.gitignore
+	editor = nvim
+	pager = less
+[merge]
+	tool = sublimerge
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
