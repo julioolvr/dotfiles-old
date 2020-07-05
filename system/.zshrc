@@ -150,6 +150,9 @@ alias be="bundle exec"
 alias n=nvim
 alias ta="tmux attach"
 
+# Use nvim as default editor
+export EDITOR=nvim
+
 # If it exists, source a private zshrc file that's not in source control
 if [ -f ~/.zshrc.private ]; then
   source ~/.zshrc.private
