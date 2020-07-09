@@ -40,4 +40,5 @@ colors:
     - { index: 19, color: '0x373b41' }
     - { index: 20, color: '0xb4b7b4' }
     - { index: 21, color: '0xe0e0e0' }
-
+    # Use this one for ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE
+    - { index: 100, color: '0x404040' }

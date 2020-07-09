@@ -56,6 +56,9 @@ export ZSH=/Users/joliv/.oh-my-zsh
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting history-substring-search)
 
+# Set color for ZSH autosuggestions, 100 is set in Alacritty's theme file
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=100"
+
 # Disable "magic" functions that slow down copy/paste
 DISABLE_MAGIC_FUNCTIONS=true
 

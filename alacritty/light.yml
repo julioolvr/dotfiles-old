@@ -33,3 +33,6 @@ colors:
     cyan:    '0x008787'
     white:   '0xeeeeee'
 
+  indexed_colors:
+    # Use this one for ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE
+    - { index: 100, color: '0xa3a3a3' }
