@@ -18,6 +18,8 @@ Plug 'peitalin/vim-jsx-typescript'
 Plug 'airblade/vim-rooter'
 Plug 'chriskempson/base16-vim'
 Plug 'preservim/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
