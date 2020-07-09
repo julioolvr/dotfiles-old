@@ -106,17 +106,20 @@ nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>
 " Perform code actions
 nmap <leader>do <Plug>(coc-codeaction)
 
-"""Theme and colors
-set termguicolors
-colorscheme base16-default-light
-
-if system("defaults read -g AppleInterfaceStyle") =~ '^Dark'
-  colorscheme base16-default-dark
-endif
-
 """ Show whitespace characters
 set list
 set lcs=tab:»_,trail:·,space:·
+
+"""Theme and colors
+set termguicolors
+colorscheme base16-atelier-savanna-light
+" Change whitespace colors
+highlight Whitespace ctermfg=6 guifg=#d8d8d8 gui=none
+
+if system("defaults read -g AppleInterfaceStyle") =~ '^Dark'
+  colorscheme base16-default-dark
+  highlight Whitespace ctermfg=6 guifg=#383838 gui=none
+endif
 
 """ Tabs instead of spaces
 set expandtab
