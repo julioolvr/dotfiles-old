@@ -98,6 +98,11 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols.
 nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" List diagnostics
+nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>
+
+" Perform code actions
+nmap <leader>do <Plug>(coc-codeaction)
 
 """Theme and colors
 set termguicolors
