@@ -20,6 +20,7 @@ Plug 'chriskempson/base16-vim'
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'yuttie/comfortable-motion.vim'
 
 call plug#end()
 
@@ -142,3 +143,12 @@ nnoremap <m-6> <c-^>
 
 """ Open NERDTree with Ctrl-K Ctrl-B
 nnoremap <silent> <c-k><c-b> :NERDTreeToggle<cr>
+
+""" Disable extra status line since it's covered by airline
+set noshowmode
+
+""" Enable mouse interaction
+set mouse=a
+
+""" Shorter statusline
+set cmdheight=1
