@@ -151,7 +151,8 @@ _fzf_compgen_dir() {
 alias ov=overmind
 alias be="bundle exec"
 alias n=nvim
-alias ta="tmux attach"
+alias ta="tmux new-session -A -s"
+alias tl="tmux ls"
 
 # Use nvim as default editor
 export EDITOR=nvim
