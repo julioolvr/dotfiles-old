@@ -17,3 +17,6 @@ lefthook.yml
 # Vim config
 .vim
 .nvimrc
+
+# Local docker config
+.dockerdev

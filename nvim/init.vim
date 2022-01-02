@@ -20,7 +20,6 @@ Plug 'chriskempson/base16-vim'
 Plug 'preservim/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'yuttie/comfortable-motion.vim'
 
 call plug#end()
 
@@ -28,6 +27,8 @@ call plug#end()
 nnoremap <C-T> :Files<cr>
 nnoremap <Leader>b :Buffers<cr>
 nnoremap <Leader>s :BLines<cr>
+nnoremap <C-g> :GFiles<cr>
+nnoremap <C-f> :Rg<cr>
 
 let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
@@ -107,19 +108,22 @@ nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>
 " Perform code actions
 nmap <leader>do <Plug>(coc-codeaction)
 
-""" Show whitespace characters
+" Find stuf""" Show whitespace characters
 set list
 set lcs=tab:»_,trail:·,space:·
 
 """Theme and colors
 set termguicolors
-colorscheme base16-atelier-savanna-light
-" Change whitespace colors
-highlight Whitespace ctermfg=6 guifg=#d8d8d8 gui=none
 
 if system("defaults read -g AppleInterfaceStyle") =~ '^Dark'
+  autocmd ColorScheme *
+    \ highlight Whitespace ctermfg=6 guifg=#383838 gui=none
   colorscheme base16-default-dark
-  highlight Whitespace ctermfg=6 guifg=#383838 gui=none
+else
+  " Change whitespace colors
+  autocmd ColorScheme *
+    \ highlight Whitespace ctermfg=6 guifg=#d8d8d8 gui=none
+  colorscheme base16-mexico-light
 endif
 
 """ Tabs instead of spaces

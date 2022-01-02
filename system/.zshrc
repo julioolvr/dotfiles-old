@@ -54,10 +54,7 @@ export ZSH=/Users/joliv/.oh-my-zsh
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting history-substring-search)
-
-# Set color for ZSH autosuggestions, 100 is set in Alacritty's theme file
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=100"
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting history-substring-search docker)
 
 # Disable "magic" functions that slow down copy/paste
 DISABLE_MAGIC_FUNCTIONS=true
@@ -84,28 +81,24 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# Disabled Pure prompt, trying out starship prompt
+# autoload -U promptinit; promptinit
+# PURE_PROMPT_SYMBOL=λ
+# prompt pure
+eval "$(starship init zsh)"
 
-autoload -U promptinit; promptinit
-PURE_PROMPT_SYMBOL=λ
-prompt pure
-
+# Disable nvm, trying out volta
 # nvm configuration
 # Set a default version manually and declare a function to load nvm
 # nvm is particularly slow and if it's not used then it's a waste to load it
-export PATH=~/.nvm/versions/node/v12.16.1/bin:$PATH
+# export PATH=~/.nvm/versions/node/v14.17.5/bin:$PATH
 
-function invm() {
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
-}
+# function invm() {
+#   export NVM_DIR="$HOME/.nvm"
+#   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
+# }
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
 
 # Setup for Rust's Racer
 RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
@@ -124,8 +117,8 @@ export PATH="$PATH:$HOME/go/bin"
 # Add own scripts and stuff to PATH
 export PATH="$PATH:$HOME/bin"
 
-# Add Python3 executables to the path
-export PATH="$PATH:`python3 -m site --user-base`/bin"
+# Add Python3 and other executables to the path
+export PATH="$PATH:$HOME/.local/bin"
 
 # Because of macOS reasons
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
@@ -149,10 +142,17 @@ _fzf_compgen_dir() {
 
 # Custom aliases
 alias ov=overmind
+alias oc="overmind connect"
+alias or="overmind restart"
 alias be="bundle exec"
 alias n=nvim
 alias ta="tmux new-session -A -s"
 alias tl="tmux ls"
+## Replace ls with exa and add some convenient shortcuts
+alias e="exa --group-directories-first"
+alias el="exa -l --group-directories-first"
+alias ls=e
+alias ll=el
 
 # Use nvim as default editor
 export EDITOR=nvim
@@ -162,18 +162,42 @@ if [ -f ~/.zshrc.private ]; then
   source ~/.zshrc.private
 fi
 
-# This is to get coc-omnisharp working in neovim
-export FrameworkPathOverride=/Library/Frameworks/Mono.framework/Versions/Current
+# Fuzzy git checkout
+fzf-git-branch() {
+  git rev-parse HEAD > /dev/null 2>&1 || return
 
-# Replace ls with exa and add some convenient shortcuts
-alias e="exa --group-directories-first"
-alias el="exa -l --group-directories-first"
-alias ls=e
-alias ll=el
+  git branch --color=always --all --sort=-committerdate |
+    grep -v HEAD |
+    fzf --height 50% --ansi --no-multi --preview-window right:65% \
+        --preview 'git log -n 50 --color=always --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed "s/.* //" <<< {})' |
+    sed "s/.* //"
+}
 
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+fzf-git-checkout() {
+  git rev-parse HEAD > /dev/null 2>&1 || return
+
+  local branch
+
+  branch=$(fzf-git-branch)
+  if [[ "$branch" = "" ]]; then
+      echo "No branch selected."
+      return
+  fi
+
+  # If branch name starts with 'remotes/' then it is a remote branch. By
+  # using --track and a remote branch name, it is the same as:
+  # git checkout -b branchName --track origin/branchName
+  if [[ "$branch" = 'remotes/'* ]]; then
+      git checkout --track $branch
+  else
+      git checkout $branch;
+  fi
+}
+
+alias gb='fzf-git-branch'
+alias gco='fzf-git-checkout'
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Uncomment this line and the one at the top of the file to profile initialization
 # zprof
